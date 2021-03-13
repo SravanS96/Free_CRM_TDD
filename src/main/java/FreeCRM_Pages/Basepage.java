@@ -11,16 +11,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public  class Basepage {
-    private static Logger log = LogManager.getLogger(Basepage.class.getName());
 
 
     protected static void sendKeys(By by, String keys){
-       // log.debug("Entering Keys Into WebElement::"+by);
 
       WebElement element= ExplicitWaitFactory.performExplicitWait(WaitStrategy.PRESENCE,by);
       element.clear();
@@ -28,17 +25,16 @@ public  class Basepage {
       ExtentLogger.pass(keys + " is Entered successfully. ");
     }
     protected static void click(By by){
-      //  log.debug("Clicking On WebElement ::"+by);
+
         WebElement element=ExplicitWaitFactory.performExplicitWait(WaitStrategy.CLICKABLE,by);
         element.click();
     }
 
 
     protected static String getText(By by){
-       // log.info("Text Is Captured From WebElement ::"+by);
+
         WebElement element = ExplicitWaitFactory.performExplicitWait(WaitStrategy.PRESENCE,by);
-        String text = element.getText();
-        return text;
+        return element.getText();
     }
 
     protected void moveToElement(By by){
@@ -57,9 +53,9 @@ public  class Basepage {
 
         List<String> list= new ArrayList<>();
       List<WebElement>webElements = ExplicitWaitFactory.performExplicitWaitForMultiplesElements(WaitStrategy.PRESENCE,by);
-        for (int i = 0; i <webElements.size() ; i++) {
-      //      log.debug("Getting WebElement Text ::"+by);
-            String name = webElements.get(i).getText();
+        for (WebElement webElement : webElements) {
+            //      log.debug("Getting WebElement Text ::"+by);
+            String name = webElement.getText();
             list.add(name);
         }
         return list;
@@ -73,10 +69,8 @@ public  class Basepage {
     protected void switchToSecondWindow(){
     //    log.debug("Switching To Child Window");
         Set<String> windows = DriverManager.getDriver().getWindowHandles();
-        Iterator<String> iterator = windows.iterator();
-        while (iterator.hasNext()){
-            String child_window=iterator.next();
-            if (getCurrentWindowHandle() != child_window){
+        for (String child_window : windows) {
+            if (!getCurrentWindowHandle().equals(child_window)) {
                 DriverManager.getDriver().switchTo().window(child_window);
             }
         }
