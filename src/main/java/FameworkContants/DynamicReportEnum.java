@@ -1,8 +1,0 @@
-package FameworkContants;
-
-public enum DynamicReportEnum {
-    OVERRIDE_REPORTS,
-    FAILED_TESTCASE_SCREENSHOTS,
-    PASSED_TESTCASE_SCREENSHOTS,
-    SKIPPED_TESTCASE_SCREENSHOTS;
-}

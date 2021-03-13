@@ -1,6 +1,5 @@
 package com.qa.Utils;
 
-import FameworkContants.DynamicReportEnum;
 import FameworkContants.FrameworkConstants;
 
 import java.io.FileInputStream;
@@ -31,21 +30,6 @@ public final class ReadPropertyUtil {
         }
 
         return property.getProperty(String.valueOf(value));
-    }
-
-    //This method will return statement is having pass,fail,skip testCases screenShots(Yes/No)
-    public static String dynamicReportScreenShots(DynamicReportEnum key) {
-
-        try (FileInputStream fis =new FileInputStream(FrameworkConstants.getPropertiesFilePath())){
-            property=new Properties();
-            property.load(fis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return property.getProperty(String.valueOf(key));
     }
 
 

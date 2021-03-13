@@ -25,7 +25,7 @@ public  class Basepage {
       WebElement element= ExplicitWaitFactory.performExplicitWait(WaitStrategy.PRESENCE,by);
       element.clear();
       element.sendKeys(keys);
-      ExtentLogger.pass(keys + " is Entered successfully. ",false);
+      ExtentLogger.pass(keys + " is Entered successfully. ");
     }
     protected static void click(By by){
       //  log.debug("Clicking On WebElement ::"+by);
@@ -56,7 +56,7 @@ public  class Basepage {
     protected List<String> getMultipleText(By by){
 
         List<String> list= new ArrayList<>();
-      List<WebElement>webElements = ExplicitWaitFactory.performExplicitWaitForMulitpleElements(WaitStrategy.PRESENCE,by);
+      List<WebElement>webElements = ExplicitWaitFactory.performExplicitWaitForMultiplesElements(WaitStrategy.PRESENCE,by);
         for (int i = 0; i <webElements.size() ; i++) {
       //      log.debug("Getting WebElement Text ::"+by);
             String name = webElements.get(i).getText();

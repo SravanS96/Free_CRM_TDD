@@ -23,15 +23,15 @@ public final class ExplicitWaitFactory{
         WebElement element = null;
         try{
 
-            if(waitStrategy==waitStrategy.CLICKABLE){
+            if(waitStrategy== WaitStrategy.CLICKABLE){
                 element=new WebDriverWait(DriverManager.getDriver(), AppConstants.getExplicitlyWait())
                         .until(ExpectedConditions.elementToBeClickable(by));
 
-            }else if(waitStrategy==waitStrategy.PRESENCE){
+            }else if(waitStrategy== WaitStrategy.PRESENCE){
                 element=new WebDriverWait(DriverManager.getDriver(), AppConstants.getExplicitlyWait())
                         .until(ExpectedConditions.presenceOfElementLocated(by));
 
-            }else if(waitStrategy==waitStrategy.VISIBLE){
+            }else if(waitStrategy== WaitStrategy.VISIBLE){
                 element= new WebDriverWait(DriverManager.getDriver(), AppConstants.getExplicitlyWait())
                         .until(ExpectedConditions.visibilityOfElementLocated(by));
 
@@ -40,26 +40,26 @@ public final class ExplicitWaitFactory{
             }
 
         }catch (StaleElementReferenceException exception){
-            ExtentLogger.fail("Stale Element Exception Occurred ", exception.fillInStackTrace(),true);
+            ExtentLogger.fail("Stale Element Exception Occurred ", exception.fillInStackTrace());
 
         }catch (TimeoutException exception){
-            ExtentLogger.fail("Element not found with in " + AppConstants.getExplicitlyWait() + " Seconds ",exception.fillInStackTrace(),true);
+            ExtentLogger.fail("Element not found with in " + AppConstants.getExplicitlyWait() + " Seconds ",exception.fillInStackTrace());
 
         }catch (Exception exception){
-            ExtentLogger.fail("Exception Occurred ", exception.fillInStackTrace(),true);
+            ExtentLogger.fail("Exception Occurred ", exception.fillInStackTrace());
 
         }
 
         return element;
     }
 
-    public static List<WebElement> performExplicitWaitForMulitpleElements(WaitStrategy waitStrategy, By by){
+    public static List<WebElement> performExplicitWaitForMultiplesElements(WaitStrategy waitStrategy, By by){
         List<WebElement> element = null;
-        if(waitStrategy==waitStrategy.PRESENCE){
+        if(waitStrategy == WaitStrategy.PRESENCE){
             element=new WebDriverWait(DriverManager.getDriver(), AppConstants.getExplicitlyWait())
                     .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 
-        }else if(waitStrategy==waitStrategy.VISIBLE){
+        }else if(waitStrategy== WaitStrategy.VISIBLE){
             element= new WebDriverWait(DriverManager.getDriver(), AppConstants.getExplicitlyWait())
                     .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
 

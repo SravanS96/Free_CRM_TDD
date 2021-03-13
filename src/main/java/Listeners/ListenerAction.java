@@ -34,7 +34,7 @@ public class ListenerAction implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         log.error(result.getMethod().getMethodName() + " is Failed");
-        ExtentLogger.fail(result.getMethod().getMethodName() + " is Failed",true);
+        ExtentLogger.fail(result.getMethod().getMethodName() + " is Failed", result.getThrowable());
 
 
     }
@@ -42,7 +42,7 @@ public class ListenerAction implements ITestListener, ISuiteListener {
     @Override
     public void onTestSkipped(ITestResult result) {
         log.error(result.getMethod().getMethodName() + " is Skipped");
-        ExtentLogger.skip(result.getMethod().getMethodName() + "is Skipped",true);
+        ExtentLogger.skip(result.getMethod().getMethodName() + "is Skipped");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ListenerAction implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentLogger.pass(result.getMethod().getMethodName() + "is Passed",true);
+        ExtentLogger.pass(result.getMethod().getMethodName() + "is Passed");
         log.info(result.getMethod().getMethodName() + "is Passed");
 
     }
