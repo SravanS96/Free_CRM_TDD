@@ -36,8 +36,6 @@ public final class Reports {
         if(Objects.nonNull(extent)){
             extent.flush();
         }
-
-        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilepathPath()).toURI());
     }
     public static void createTest(String testCaseName){
         test =extent.createTest(testCaseName);

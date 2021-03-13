@@ -18,12 +18,12 @@ public final class Drivers {
     }
 
 
-    public static void initDriver(String browser) {
+    public static void initDriver(String browser ,String headlessMode) {
         if (Objects.isNull(DriverManager.getDriver())) {
 
-            if(ReadPropertyUtil.getBrowser(browser).equalsIgnoreCase("Chrome")){
+            if(ReadPropertyUtil.getBrowser(browser).equalsIgnoreCase("chrome")){
                 System.setProperty(AppConstants.getCHROMEDRIVER_VALUE(), AppConstants.getCHROMEDRIVER_PATH());
-                if(ReadPropertyUtil.getBrowser(browser).equalsIgnoreCase("chrome_headless")){
+                if(ReadPropertyUtil.getBrowser(headlessMode).equalsIgnoreCase("yes")){
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--headless");
                     DriverManager.setDriver(new ChromeDriver(chromeOptions));

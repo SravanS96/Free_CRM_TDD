@@ -21,7 +21,7 @@ public class Base{
         log.info("Current Step ::"+"Setting Up environment");
        // System.out.println(" Setting Up environment");
 
-        Drivers.initDriver("browser");
+        Drivers.initDriver("browser", "headless_mode");
 
     }
 
