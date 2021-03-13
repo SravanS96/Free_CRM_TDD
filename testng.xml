@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name = "Listeners.ListenerAction"></listener>
+    </listeners>
+
+    <test name="FreeCRM_Automation">
+        <classes>
+            <class name="com.qa.CRMTests.LoginPageTest" />
+            <class name="com.qa.CRMTests.HomePageTest" />
+        </classes>
+    </test>
+
+</suite> <!-- Suite -->
