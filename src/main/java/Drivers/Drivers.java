@@ -26,6 +26,7 @@ public final class Drivers {
                 if(ReadPropertyUtil.getBrowser(headlessMode).equalsIgnoreCase("yes")){
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--headless");
+                    chromeOptions.addArguments("--window-size=1920,1080");
                     DriverManager.setDriver(new ChromeDriver(chromeOptions));
                 }else {
                     DriverManager.setDriver(new ChromeDriver());
