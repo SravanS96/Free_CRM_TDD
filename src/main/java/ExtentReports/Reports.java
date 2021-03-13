@@ -23,7 +23,7 @@ public final class Reports {
     public static void initreports(){
         if(Objects.isNull(extent)){
             extent = new ExtentReports();
-            ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilepathPath());
+            ExtentSparkReporter spark = new ExtentSparkReporter("index.html");
             extent.attachReporter(spark);
             spark.config().setTheme(Theme.DARK);
             spark.config().setReportName("Admin96");

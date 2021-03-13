@@ -8,7 +8,7 @@ public final class FrameworkConstants {
     }
     static Object value = null;
     private static final String PROPERTIES_FILE_PATH = System.getProperty("user.dir") + "/src/test/java/com/qa/config/Config.properties";
-    private static final String EXTENT_REPORT_FILEPATH = System.getProperty("user.dir") + "/extent-test-output";
+    private static final String EXTENT_REPORT_FILEPATH = System.getProperty("user.dir") + "target/extent-test-output";
     private static final String EXCEL_SHEET_PATH=System.getProperty("user.dir")+"/src/main/resources/excels/TestDataForCRM.xlsx";
 
     public static String getPropertiesFilePath() {
