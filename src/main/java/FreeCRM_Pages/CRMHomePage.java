@@ -14,8 +14,11 @@ public final class CRMHomePage extends Basepage {
     protected static By settingsBtn=By.xpath("//div[@role='listbox']");
 
     public boolean verifySuccessfulLogin(){
-        //log.info("Current Step ::"+"Login Successfully");
-        ExtentReportManager.getExtentTest().pass("Login successful");
+        if (isDisplayed(settingsBtn)) {
+            ExtentReportManager.getExtentTest().pass("Login successful");
+        } else {
+            ExtentReportManager.getExtentTest().fail("Login was not successful");
+        }
         return isDisplayed(settingsBtn);
     }
 

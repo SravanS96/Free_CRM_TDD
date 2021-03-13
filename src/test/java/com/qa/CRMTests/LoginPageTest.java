@@ -75,10 +75,8 @@ public class LoginPageTest extends Base {
     @Test(dataProvider = "getData")
     public void TC_09_login_Button_Verification(String username, String password){
 
-        System.out.println("Test cae running is"+"TC_08_Support_Link_Verification");
         homePage = loginPage.navigateToLoginPage().doUserLogin(username,password);
         boolean success = homePage.verifySuccessfulLogin();
-
         Assert.assertTrue(success,"Login Failed");
 
     }
