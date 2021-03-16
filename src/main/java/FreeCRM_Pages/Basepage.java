@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 public  class Basepage {
+    private static Logger log = LogManager.getLogger(Basepage.class.getName());
 
 
     protected static void sendKeys(By by, String keys){
@@ -25,9 +26,11 @@ public  class Basepage {
       ExtentLogger.pass(keys + " is Entered successfully. ");
     }
     protected static void click(By by){
+        log.info("Clicked On WebElement");
 
         WebElement element=ExplicitWaitFactory.performExplicitWait(WaitStrategy.CLICKABLE,by);
         element.click();
+        ExtentLogger.info(by+"  ::  Clicked");
     }
 
 
@@ -38,14 +41,15 @@ public  class Basepage {
     }
 
     protected void moveToElement(By by){
-      //  log.debug("Cursor Is Moved To WebElement ::"+by);
+
         Actions actions =new Actions(DriverManager.getDriver());
         WebElement element = ExplicitWaitFactory.performExplicitWait(WaitStrategy.PRESENCE,by);
         actions.moveToElement(element).build().perform();
     }
 
     protected boolean isDisplayed(By by){
-     //   log.debug("WebElement is displayed");
+        log.info("Element is Displayed");
+
         WebElement element = ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,by);
         return element.isDisplayed();
     }
@@ -54,7 +58,7 @@ public  class Basepage {
         List<String> list= new ArrayList<>();
       List<WebElement>webElements = ExplicitWaitFactory.performExplicitWaitForMultiplesElements(WaitStrategy.PRESENCE,by);
         for (WebElement webElement : webElements) {
-            //      log.debug("Getting WebElement Text ::"+by);
+
             String name = webElement.getText();
             list.add(name);
         }
@@ -62,12 +66,12 @@ public  class Basepage {
     }
 
     protected String getCurrentWindowHandle(){
-   //   log.debug("Getting Window Handling Mechanism");
+
         return DriverManager.getDriver().getWindowHandle();
     }
 
     protected void switchToSecondWindow(){
-    //    log.debug("Switching To Child Window");
+
         Set<String> windows = DriverManager.getDriver().getWindowHandles();
         for (String child_window : windows) {
             if (!getCurrentWindowHandle().equals(child_window)) {

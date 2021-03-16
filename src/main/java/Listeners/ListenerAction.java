@@ -58,8 +58,8 @@ public class ListenerAction implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentLogger.pass(result.getMethod().getMethodName() + "is Passed");
-        log.info(result.getMethod().getMethodName() + "is Passed");
+        ExtentLogger.pass(result.getMethod().getMethodName() + " :: is Passed");
+        log.info(result.getMethod().getMethodName() + " :: is Passed");
 
     }
     @Override

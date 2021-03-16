@@ -47,20 +47,37 @@ public final class ReadPropertyUtil {
 
         return property.getProperty(String.valueOf(browser));
     }
+    public static String getUsername(String username){
+        try(FileInputStream fis =new FileInputStream(FrameworkConstants.getPropertiesFilePath())){
+            property=new Properties();
+            property.load(fis);
+
+
+        }   catch (FileNotFoundException e){
+            e.printStackTrace();
+
+        }   catch (IOException e){
+            e.printStackTrace();
+
+        }
+        return property.getProperty(String.valueOf(username));
+    }
+    public static String getPassword(String password) {
+        try (FileInputStream fis = new FileInputStream(FrameworkConstants.getPropertiesFilePath())) {
+            property = new Properties();
+            property.load(fis);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return property.getProperty(String.valueOf(password));
+    }
 
 
 }
-//
-//    //Throwing Exception if the properties file key is "null"
-//    public static String get(ConfigEnumProperties key) throws Exception {
-//        String vaulue="";
-//        if (Objects.isNull(vaulue)|| Objects.isNull(CONFIGMAP.get(key))) {
-//            throw new Exception("Property" + key + "is missing please check properties file");
-//
-//        }
-//      return get(key.toLowerCase());
-//    }
-//}
-//
-//
 

@@ -6,8 +6,11 @@ import FreeCRM_Pages.CRM_LoginPage;
 import com.qa.Base.Base.Base;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import Listeners.ListenerAction;
 
+@Listeners(ListenerAction.class)
 public class LoginPageTest extends Base {
 
     CRM_LoginPage loginPage = new CRM_LoginPage();
