@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public final class CRMHomePage extends Basepage {
     CRM_LoginPage loginPage;
@@ -41,7 +40,7 @@ public final class CRMHomePage extends Basepage {
     protected static By cardDetails_saveButton=By.xpath("//button[normalize-space()='Save Card']");
 
     //Account Settings Menu
-    protected static By myPlan=By.xpath("//div/a[normalize-space()='My Plan']");
+      public static By myPlan=By.xpath("//div/a[normalize-space()='My Plan']");
     protected static By invoices=By.xpath("//a[normalize-space()='Invoices']");
     protected static By charges=By.xpath("//div/a[normalize-space()='Charges']");
     protected static By telephonyBilling=By.xpath("//div/a[normalize-space()='Telephony Billing']");
@@ -56,9 +55,9 @@ public final class CRMHomePage extends Basepage {
 
     protected String dealsPageActualText ="Deals";
     protected String ActualLogoText ="Manage your preferences";
-    protected String invoiceActualText ="Amount";
-    protected String chargesActualText ="Description";
-    protected String ProButtonActualText="Upgrade to Pro";
+    protected static String invoiceActualText ="Amount";
+    protected static String chargesActualText ="Description";
+    protected static String ProButtonActualText="Upgrade to Pro";
 
 
     public boolean verifySuccessfulLogin() {
@@ -72,25 +71,27 @@ public final class CRMHomePage extends Basepage {
         return isDisplayed(settingsBtn);
     }
 
-    public CRMHomePage doLogin(){
+    public static String doLogin(){
         click(LoginButton1);
         sendKeys(email_Field_login, ReadPropertyUtil.getUsername("username"));
         sendKeys(password_Field_login,ReadPropertyUtil.getPassword("password"));
         click(loginButton2);
-       String DealsPage= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,dealsPage).getText();
-        Assert.assertEquals(dealsPageActualText,"Deals");
+       String DealsPageActualText= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,dealsPage).getText();
 
-        return this;
+
+        return DealsPageActualText;
     }
-    public CRMHomePage verifyFreeAccLink(){
+    public static String verifyFreeAccLink(){
         click(FreeAccLink);
         String logoSubText=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,FreeAccSettingsLogo).getText();
-        Assert.assertEquals(ActualLogoText,"Manage your preferences");
-        return this;
+
+        return logoSubText;
 
     }
-    public CRMHomePage verifyMyPlan(){
+    public static boolean verifyMyPlan(){
         click(myPlan);
+       // String myPlanText=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,myPlan).getText();
+       boolean myPlanIsDisplayed= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,myPlan).isDisplayed();
         click(PayUsingDebit_or_CreditCard);
         sendKeys(cardDetails_NameOnCard,"Shiva Kumar");
         sendKeys(cardDetails_cardNumber,"90879654321233");
@@ -103,30 +104,30 @@ public final class CRMHomePage extends Basepage {
         click(cardDetails_CountryDropDown);
         sendKeys(cardDetails_CountryDropDown,"china");
         click(cardDetails_saveButton);
-        return this;
+
+
+        return myPlanIsDisplayed;
     }
 
-    public void verifyInvoices(){
+    public static String verifyInvoices(){
         click(invoices);
        WebElement invoiceTableHeadAmount= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,invoicesAmmount);
 
-       Assert.assertEquals(invoiceTableHeadAmount.getText(), invoiceActualText);
-
+      return invoiceTableHeadAmount.getText();
     }
 
-    public void verifyCharges(){
+    public static String verifyCharges(){
 
         click(charges);
         WebElement chargesTableHeadDescription=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,chargesDescription);
-        chargesTableHeadDescription.getText();
-        Assert.assertEquals(chargesTableHeadDescription.getText(), chargesActualText);
 
+
+        return chargesTableHeadDescription.getText();
     }
-    public void verifyTelephonyBilling() {
+    public static String verifyTelephonyBilling() {
         click(telephonyBilling);
         WebElement updateToProButton = ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE, phoneBillingUpdateToPro);
         String ProButtonExpectedText = updateToProButton.getText();
-        Assert.assertEquals(ProButtonExpectedText, ProButtonActualText);
         if (ProButtonExpectedText.equals(ProButtonActualText)) {
             click(phoneBillingUpdateToPro);
             verifyMyPlan();
@@ -134,13 +135,16 @@ public final class CRMHomePage extends Basepage {
         } else {
             throw new RuntimeException("Exception Occurred  at ::"+ new Object().getClass().getEnclosingMethod().getName());
         }
+        return ProButtonExpectedText;
     }
 
-    public void verifyTerminateAccount(){
+    public static boolean verifyTerminateAccount(){
         click(terminateAccount);
         sendKeys(deleteAccConformingField,"delete me");
         WebElement deleteAccButton=ExplicitWaitFactory.performExplicitWait(WaitStrategy.CLICKABLE,terminateAccButton);
-        Assert.assertTrue(deleteAccButton.isEnabled());
+        boolean isDisplatyedDeleteButton=deleteAccButton.isDisplayed();
+
+        return isDisplatyedDeleteButton;
 
     }
 }
