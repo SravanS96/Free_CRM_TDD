@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public final class CRMHomePage extends Basepage {
-    CRM_LoginPage loginPage;
+    CRMLoginPage loginPage;
     private static Logger log = LogManager.getLogger(Basepage.class.getName());
 
     public CRMHomePage() {
@@ -72,6 +72,7 @@ public final class CRMHomePage extends Basepage {
     }
 
     public static String doLogin(){
+        log.info("current step ::"+ " User login");
         click(LoginButton1);
         sendKeys(email_Field_login, ReadPropertyUtil.getUsername("username"));
         sendKeys(password_Field_login,ReadPropertyUtil.getPassword("password"));
@@ -82,6 +83,7 @@ public final class CRMHomePage extends Basepage {
         return DealsPageActualText;
     }
     public static String verifyFreeAccLink(){
+        log.info("current step ::"+ " Verifying the Free Account link");
         click(FreeAccLink);
         String logoSubText=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,FreeAccSettingsLogo).getText();
 
@@ -89,6 +91,7 @@ public final class CRMHomePage extends Basepage {
 
     }
     public static boolean verifyMyPlan(){
+        log.info("current step ::"+ " Verifying My Plan");
         click(myPlan);
        // String myPlanText=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,myPlan).getText();
        boolean myPlanIsDisplayed= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,myPlan).isDisplayed();
@@ -110,6 +113,7 @@ public final class CRMHomePage extends Basepage {
     }
 
     public static String verifyInvoices(){
+        log.info("current step ::"+ " Verifying the Invoices");
         click(invoices);
        WebElement invoiceTableHeadAmount= ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,invoicesAmmount);
 
@@ -117,14 +121,14 @@ public final class CRMHomePage extends Basepage {
     }
 
     public static String verifyCharges(){
-
+        log.info("current step ::"+" Verifying the Charges");
         click(charges);
         WebElement chargesTableHeadDescription=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,chargesDescription);
-
 
         return chargesTableHeadDescription.getText();
     }
     public static String verifyTelephonyBilling() {
+        log.info("current step ::"+ " Verifying the Telephony Billing" );
         click(telephonyBilling);
         WebElement updateToProButton = ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE, phoneBillingUpdateToPro);
         String ProButtonExpectedText = updateToProButton.getText();
@@ -139,6 +143,7 @@ public final class CRMHomePage extends Basepage {
     }
 
     public static boolean verifyTerminateAccount(){
+        log.info("current step ::"+" verifying tne Terminate Account");
         click(terminateAccount);
         sendKeys(deleteAccConformingField,"delete me");
         WebElement deleteAccButton=ExplicitWaitFactory.performExplicitWait(WaitStrategy.CLICKABLE,terminateAccButton);

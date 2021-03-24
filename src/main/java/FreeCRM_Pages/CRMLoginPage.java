@@ -13,12 +13,12 @@ import org.testng.Assert;
 import java.util.Arrays;
 import java.util.List;
 
-public final class CRM_LoginPage extends Basepage {
+public final class CRMLoginPage extends Basepage {
 
-    public CRM_LoginPage() {
+    public CRMLoginPage() {
 
     }
-    private static final Logger log = LogManager.getLogger(CRM_LoginPage.class.getName());
+    private static final Logger log = LogManager.getLogger(CRMLoginPage.class.getName());
 
     protected static By aboutLink = By.xpath("//a[text()='About']");
     protected static By signUpLink = By.xpath("//span[@class='mdi-chart-bar icon icon-md']");
@@ -48,7 +48,7 @@ public final class CRM_LoginPage extends Basepage {
     protected static String Expected_Support_ChildPageText="Cogmento Help Center";
     protected static String Expected_Zoom_Page_HeaderTitle="Welcome to BigBlueButton.";
 
-    public CRM_LoginPage ClickOnAboutUsLink(){
+    public CRMLoginPage ClickOnAboutUsLink(){
 
         log.debug("Current Step ::"+"Clicking on About Us Link");
 
@@ -59,7 +59,7 @@ public final class CRM_LoginPage extends Basepage {
 
         return this;
     }
-    public CRM_LoginPage ClickOnSignUpLink(){
+    public CRMLoginPage ClickOnSignUpLink(){
 
         log.info("Current Step ::"+"Clicking On SignUp Link ");
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
@@ -68,7 +68,7 @@ public final class CRM_LoginPage extends Basepage {
        Assert.assertTrue(isDisplayed(email_Field_login));
         return this;
     }
-    public CRM_LoginPage CRMDropDownVerification(){
+    public CRMLoginPage CRMDropDownVerification(){
 
         log.debug("Current Step ::"+"Storing all CRM DropDown Elements To List And Comparing");
 
@@ -84,7 +84,7 @@ public final class CRM_LoginPage extends Basepage {
         return this;
     }
 
-    public CRM_LoginPage appsDropDownVerification(){
+    public CRMLoginPage appsDropDownVerification(){
 
       log.debug("Current Step ::"+"Storing all App DropDown Elements To List And Comparing");
 
@@ -98,7 +98,7 @@ public final class CRM_LoginPage extends Basepage {
         return this;
     }
 
-    public CRM_LoginPage andriodApperification(){
+    public CRMLoginPage andriodApperification(){
 
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
         log.debug("Current Step ::"+"Clicking on Apps Toggle");
@@ -109,7 +109,7 @@ public final class CRM_LoginPage extends Basepage {
         return this;
     }
 
-    public CRM_LoginPage iOSApperification(){
+    public CRMLoginPage iOSApperification(){
 
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
        log.debug("Clicking on Apps Toggle");
@@ -120,7 +120,7 @@ public final class CRM_LoginPage extends Basepage {
         Assert.assertEquals(getPageTitle(),Expected_iOS_pageTitle);
         return this;
     }
-    public CRM_LoginPage zoomLinkVerification(){
+    public CRMLoginPage zoomLinkVerification(){
 
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
         log.debug("Current Step ::"+"Clicking On Zoom Link");
@@ -130,7 +130,7 @@ public final class CRM_LoginPage extends Basepage {
         closeCurrentWindow();
         return this;
     }
-    public CRM_LoginPage support_Link_Verification(){
+    public CRMLoginPage support_Link_Verification(){
 
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
         log.debug("Current Step ::"+"Clicking On SupportUs Link");
@@ -140,7 +140,7 @@ public final class CRM_LoginPage extends Basepage {
        Assert.assertEquals(actualSupportText,Expected_Support_ChildPageText);
        return this;
     }
-    public CRM_LoginPage loginButton_Verificaton(){
+    public CRMLoginPage loginButton_Verificaton(){
 
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
         click(loginButton1);
@@ -150,7 +150,7 @@ public final class CRM_LoginPage extends Basepage {
 
         return this;
     }
-    public CRM_LoginPage loginData_Verification(){
+    public CRMLoginPage loginData_Verification(){
 
         log.debug("Current Step ::"+"Checking the login data");
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());
@@ -159,7 +159,7 @@ public final class CRM_LoginPage extends Basepage {
         return this;
     }
 
-    public CRM_LoginPage navigateToLoginPage(){
+    public CRMLoginPage navigateToLoginPage(){
 
        log.info("Current Step ::"+"Navigating To LogIn Page");
         ExtentLogger.info("Step Executing is :: " + new Object(){}.getClass().getEnclosingMethod().getName());

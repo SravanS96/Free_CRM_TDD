@@ -23,6 +23,7 @@ public final class HomePageTest extends Base {
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Smoke","Regression"})
     @Test
     public void TC_11_verify_SignUp_link(){
+
        String DealsPageExpectedText= homePage.doLogin();
        Assert.assertEquals(DealsPageExpectedText,"Deals Summary");
     }
@@ -30,6 +31,7 @@ public final class HomePageTest extends Base {
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_12_verify_FreeAccountLink() {
+
          homePage.doLogin();
         String actual=CRMHomePage.verifyFreeAccLink();
         Assert.assertEquals(actual,"Manage your preferences");
@@ -38,6 +40,7 @@ public final class HomePageTest extends Base {
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_13_verify_FreeAccountLink_MyPlan(){
+
         homePage.doLogin();
         CRMHomePage.verifyFreeAccLink();
         boolean myPlanIsDisplayed=CRMHomePage.verifyMyPlan();
@@ -48,6 +51,7 @@ public final class HomePageTest extends Base {
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_14_verify_FreeAccountLink_Invoice(){
+
         homePage.doLogin();
         CRMHomePage.verifyFreeAccLink();
         String actualText=CRMHomePage.verifyInvoices();
@@ -58,15 +62,18 @@ public final class HomePageTest extends Base {
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_15_verify_FreeAccountLink_Charges(){
+
         homePage.doLogin();
         CRMHomePage.verifyFreeAccLink();
        String actualText= CRMHomePage.verifyCharges();
        Assert.assertEquals(actualText,"Description");
+
     }
 
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_16_verify_FreeAccountLink_PhoneBilling(){
+
         homePage.doLogin();
         CRMHomePage.verifyFreeAccLink();
         String actualText=CRMHomePage.verifyTelephonyBilling();
@@ -74,20 +81,18 @@ public final class HomePageTest extends Base {
         boolean flag=ExplicitWaitFactory.performExplicitWait(WaitStrategy.VISIBLE,CRMHomePage.myPlan).isDisplayed();
         Assert.assertFalse(flag);
 
-
     }
 
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Regression"})
     @Test
     public void TC_17_verify_FreeAccountLink_TerminateAccount(){
+
         homePage.doLogin();
         CRMHomePage.verifyFreeAccLink();
         boolean flag=CRMHomePage.verifyTerminateAccount();
-
         Assert.assertTrue(flag);
 
     }
-
 
 
 

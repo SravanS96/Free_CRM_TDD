@@ -2,7 +2,7 @@ package com.qa.CRMTests;
 
 import CustomizedAnnotations.FrameworkAnnotation;
 import FreeCRM_Pages.CRMHomePage;
-import FreeCRM_Pages.CRM_LoginPage;
+import FreeCRM_Pages.CRMLoginPage;
 import com.qa.Base.Base.Base;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -13,7 +13,7 @@ import Listeners.ListenerAction;
 @Listeners(ListenerAction.class)
 public class LoginPageTest extends Base {
 
-    CRM_LoginPage loginPage = new CRM_LoginPage();
+    CRMLoginPage loginPage = new CRMLoginPage();
     CRMHomePage homePage = new CRMHomePage();
     @FrameworkAnnotation(addAuthors = {"Admin96"},addCategories = {"Smoke","Regression"})
     @Test

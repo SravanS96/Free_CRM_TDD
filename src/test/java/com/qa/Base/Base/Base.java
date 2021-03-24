@@ -2,14 +2,14 @@ package com.qa.Base.Base;
 
 
 import Drivers.Drivers;
-import FreeCRM_Pages.CRM_LoginPage;
+import FreeCRM_Pages.CRMLoginPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class Base{
-    private static final Logger log = LogManager.getLogger(CRM_LoginPage.class.getName());
+    private static final Logger log = LogManager.getLogger(CRMLoginPage.class.getName());
 
 
     protected Base(){
